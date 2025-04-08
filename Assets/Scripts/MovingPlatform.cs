@@ -90,7 +90,7 @@ public class MovingPlatform : MonoBehaviour
         if (moveCenario)
         {
             moveCenario = false;
-            cenarioCreate.scrollSpeed = 1;
+            cenarioCreate.scrollSpeed = 1.5f;
             cenarioCreate.StartGenerate();
             PlataformasCreate.StartSpawn();
         }

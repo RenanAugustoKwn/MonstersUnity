@@ -445,7 +445,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1809263041652865499, guid: 27861babe89115f45972e3d9bc620d3c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1
+      value: -1.4
       objectReference: {fileID: 0}
     - target: {fileID: 1809263041652865499, guid: 27861babe89115f45972e3d9bc620d3c, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1946,7 +1946,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1809263041652865499, guid: 27861babe89115f45972e3d9bc620d3c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5
+      value: 4.85
       objectReference: {fileID: 0}
     - target: {fileID: 1809263041652865499, guid: 27861babe89115f45972e3d9bc620d3c, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2302,7 +2302,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1809263041652865499, guid: 27861babe89115f45972e3d9bc620d3c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3
+      value: 2.7
       objectReference: {fileID: 0}
     - target: {fileID: 1809263041652865499, guid: 27861babe89115f45972e3d9bc620d3c, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2658,7 +2658,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 2
-  jumpForce: 6
+  jumpForce: 6.5
   isGrounded: 1
 --- !u!1 &1320406556
 GameObject:
@@ -2672,7 +2672,6 @@ GameObject:
   - component: {fileID: 1320406560}
   - component: {fileID: 1320406559}
   - component: {fileID: 1320406558}
-  - component: {fileID: 1320406562}
   - component: {fileID: 1320406561}
   m_Layer: 5
   m_Name: JumpBtn
@@ -2796,18 +2795,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttonType: 2
---- !u!114 &1320406562
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1320406556}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 88063a2f6dd38924893d526979f4b9cf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1397276511
 GameObject:
   m_ObjectHideFlags: 0
@@ -3128,7 +3115,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1809263041652865499, guid: 27861babe89115f45972e3d9bc620d3c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1
+      value: 0.67
       objectReference: {fileID: 0}
     - target: {fileID: 1809263041652865499, guid: 27861babe89115f45972e3d9bc620d3c, type: 3}
       propertyPath: m_LocalPosition.z
