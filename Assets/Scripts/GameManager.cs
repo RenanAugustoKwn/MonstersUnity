@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     public GameObject powerSlider;
     public GameObject gameOverPainel;
     public GameObject plataformaBase;
+    public GameObject boss01;
 
     public CenarioCreate cenarioCreate;
 
@@ -27,6 +28,7 @@ public class GameManager : MonoBehaviour
     public int orbesScore = 0;
     public int totalVida = 3;
 
+    bool moveboss01 = false;
     public static event Action DestroyPlats;
 
     // Start is called before the first frame update
@@ -43,7 +45,14 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if(moveboss01)
+        {
+            boss01.transform.Translate(Vector2.down * 1f * Time.deltaTime);
+            if(boss01.transform.position.y <= 3.5f)
+            {
+                moveboss01 = false;
+            }
+        }
     }
     public void MecanicaBoss01()
     {
@@ -53,6 +62,8 @@ public class GameManager : MonoBehaviour
         cenarioCreate.scrollSpeed = 0f;
         DestroyPlats?.Invoke();
 
+        boss01.SetActive(true);
+        moveboss01 = true;
     }
 
     public void RemoveVida()
