@@ -587,7 +587,7 @@ GameObject:
   - component: {fileID: 286084934}
   m_Layer: 0
   m_Name: EspinhosFinal
-  m_TagString: Untagged
+  m_TagString: Espinhos
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1777,6 +1777,7 @@ MonoBehaviour:
   - {fileID: 483903909}
   - {fileID: 302527760}
   powerSlider: {fileID: 705118390}
+  gameOverPainel: {fileID: 275732382}
   checkPoint: {x: 0, y: 0}
   timeSpawnOrbes: 1
   timeSpawnPedras: 2

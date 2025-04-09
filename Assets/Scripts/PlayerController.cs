@@ -13,8 +13,11 @@ public class PlayerController : MonoBehaviour
     private bool isMovingLeft = false;
     private bool isMovingRight = false;
 
+    private GameManager gameManager;
+
     void Start()
     {
+        gameManager = FindAnyObjectByType<GameManager>();
         rb = GetComponent<Rigidbody2D>();
     }
 
@@ -69,6 +72,23 @@ public class PlayerController : MonoBehaviour
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
             isGrounded = false;
+        }
+    }
+    public void JumpReviver()
+    {
+        rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+        isGrounded = false;
+    }
+    public void JumpPause()
+    {
+        rb.velocity = new Vector2(rb.velocity.x,0f);
+        isGrounded = false;
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Espinhos"))
+        {
+            gameManager.RemoveVida();
         }
     }
 }

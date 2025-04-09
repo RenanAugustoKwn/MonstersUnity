@@ -104,5 +104,12 @@ public class MovingPlatform : MonoBehaviour
             // Inverte direção horizontal ao colidir
             direction *= -1;
         }
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            if(!collision.gameObject.GetComponent<PlayerController>().isGrounded)
+            {
+                collision.gameObject.GetComponent<PlayerController>().JumpPause();
+            }
+        }
     }
 }

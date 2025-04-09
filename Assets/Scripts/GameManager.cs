@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     public GameObject pedrasPrefab;
     public GameObject[] vidasGO;
     public GameObject powerSlider;
+    public GameObject gameOverPainel;
     public Vector2 checkPoint;
 
 
@@ -71,7 +72,18 @@ public class GameManager : MonoBehaviour
                 vidasGO[2].SetActive(false);
             }
         }
-        player.transform.position = checkPoint;
+
+        if(totalVida > 0)
+        {
+            player.transform.position = checkPoint;
+            player.GetComponent<BoxCollider2D>().isTrigger = true;
+            player.GetComponent<PlayerController>().JumpReviver();
+        }
+        else
+        {
+            player.SetActive(false);
+            gameOverPainel.SetActive(true);
+        }
     }
     public void AddOrbes()
     {
