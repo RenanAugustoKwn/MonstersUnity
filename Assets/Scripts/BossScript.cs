@@ -19,6 +19,24 @@ public class BossScript : MonoBehaviour
     private bool spawnFire = true;
     private bool spawnWall = false;
 
+    private int sequenceSkill = 0;
+
+    void OnEnable()
+    {
+        EspinhosWall.BossTimeFire += VoltarAtirar;
+    }
+
+    void OnDisable()
+    {
+        EspinhosWall.BossTimeFire -= VoltarAtirar;
+    }
+    void VoltarAtirar()
+    {
+        spawnFire = true;
+        sequenceSkill++;
+        StartCoroutine(SpawnFireTime());
+    }
+
     private void Start()
     {
         StartCoroutine(SpawnFireTime());
@@ -95,8 +113,18 @@ public class BossScript : MonoBehaviour
             
             yield return new WaitForSeconds(spawnFireTime);
             spawnFire = false;
-            CriarEspinhosWallD();
-            //CriarEspinhosWallE();
+            if(sequenceSkill == 0)
+            {
+                CriarEspinhosWallE();
+            }
+            else if (sequenceSkill == 1)
+            {
+                CriarEspinhosWallD();
+            }
+            else if (sequenceSkill == 3)
+            {
+
+            }
             StopAllCoroutines();
         }
     }

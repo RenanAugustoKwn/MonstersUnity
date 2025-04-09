@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 public class EspinhosWall : MonoBehaviour
@@ -13,6 +14,9 @@ public class EspinhosWall : MonoBehaviour
     private bool trocarDir = false;
     private float posInitial;
     private bool wallE = false;
+
+    public static event Action BossTimeFire;
+
 
     private void Start()
     {
@@ -80,6 +84,7 @@ public class EspinhosWall : MonoBehaviour
                 if (transform.position.x >= posInitial)
                 {
                     voltar = false;
+                    BossTimeFire?.Invoke();
                     Destroy(gameObject);
                 }
             }
@@ -88,6 +93,7 @@ public class EspinhosWall : MonoBehaviour
                 if (transform.position.x <= posInitial)
                 {
                     voltar = false;
+                    BossTimeFire?.Invoke();
                     Destroy(gameObject);
                 }
             }

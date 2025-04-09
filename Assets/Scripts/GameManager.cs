@@ -31,12 +31,6 @@ public class GameManager : MonoBehaviour
     bool moveboss01 = false;
     public static event Action DestroyPlats;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
     public void ComecarACairOrbes()
     {
         StartCoroutine(SpawnLoopOrbes());
