@@ -177,8 +177,10 @@ MonoBehaviour:
   isCameraMove: 0
   moveCenario: 0
   speed: 2
-  minY: 0
-  maxY: 0
+  speedUp: 3
+  speedDown: 1
+  minY: 1
+  maxY: 1
 --- !u!114 &5933932420350359503
 MonoBehaviour:
   m_ObjectHideFlags: 0

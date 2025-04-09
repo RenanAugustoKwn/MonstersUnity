@@ -10,6 +10,8 @@ public class MovingPlatform : MonoBehaviour
     public bool moveCenario = false;
     public float speed = 2f;
 
+    public float speedUp = 3f;
+    public float speedDown = 1f;
     // Para movimento vertical
     public float minY;
     public float maxY;
@@ -60,7 +62,8 @@ public class MovingPlatform : MonoBehaviour
     {
         if (isVertical)
         {
-            transform.Translate(direction * speed * Time.deltaTime);
+            float currentSpeed = direction == Vector2.up ? speedUp : speedDown;
+            transform.Translate(direction * currentSpeed * Time.deltaTime);
 
             if (transform.localPosition.y >= maxY)
                 direction = Vector2.down;
@@ -110,6 +113,17 @@ public class MovingPlatform : MonoBehaviour
             {
                 collision.gameObject.GetComponent<PlayerController>().JumpPause();
             }
+        }
+        if (collision.gameObject.CompareTag("Espinhos") && isVertical)
+        {
+            // Procura por um filho com o componente PlayerController
+            PlayerController player = GetComponentInChildren<PlayerController>();
+            if (player != null)
+            {
+                // Remove o parent do objeto que tem o PlayerController
+                player.transform.SetParent(null);
+            }
+            Destroy(gameObject);
         }
     }
 }
