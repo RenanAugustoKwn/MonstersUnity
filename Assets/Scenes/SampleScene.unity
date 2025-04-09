@@ -1696,6 +1696,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projeteisPrefab: {fileID: 8429228203945612754, guid: a2ae0be5017b277428d7442342f97329, type: 3}
   espinhosWallPrefab: {fileID: 891251234016740610, guid: 936d42da4abaf2c468c7476eefb88e98, type: 3}
+  espinhosWallDuploPrefab: {fileID: 5225713789241731338, guid: 5f1c3e6022193f0438055a4ae3d4f563, type: 3}
   firePoint: {fileID: 962270908}
   player: {fileID: 1232500796}
   projectileSpeed: 5

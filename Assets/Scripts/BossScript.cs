@@ -6,6 +6,7 @@ public class BossScript : MonoBehaviour
     [Header("Referências")]
     public GameObject projeteisPrefab;    // Prefab do projétil
     public GameObject espinhosWallPrefab;
+    public GameObject espinhosWallDuploPrefab;
     public Transform firePoint;            // Ponto de onde os projéteis são disparados
     public Transform player;               // Referência ao jogador
 
@@ -19,16 +20,18 @@ public class BossScript : MonoBehaviour
     private bool spawnFire = true;
     private bool spawnWall = false;
 
-    private int sequenceSkill = 0;
+    public int sequenceSkill = 0;
 
     void OnEnable()
     {
         EspinhosWall.BossTimeFire += VoltarAtirar;
+        EspinhosWallDuplos.BossTimeFire += VoltarAtirar;
     }
 
     void OnDisable()
     {
         EspinhosWall.BossTimeFire -= VoltarAtirar;
+        EspinhosWallDuplos.BossTimeFire -= VoltarAtirar;
     }
     void VoltarAtirar()
     {
@@ -87,6 +90,17 @@ public class BossScript : MonoBehaviour
             wallScript.SetDirection(direction, paredeSpeed, pos.x, false);
         }
     }
+    void CriarEspinhosDuplo()
+    {
+        Vector3 pos = new(0, 0, 0);
+        GameObject wallClone = Instantiate(espinhosWallDuploPrefab, pos, Quaternion.identity);
+        // Envia os dados de direção e velocidade pro script do projétil
+        EspinhosWallDuplos wallScript = wallClone.GetComponent<EspinhosWallDuplos>();
+        if (wallScript != null)
+        {
+            wallScript.SetSpeed(paredeSpeed);
+        }
+    }
 
     void FireProjectile()
     {
@@ -121,9 +135,9 @@ public class BossScript : MonoBehaviour
             {
                 CriarEspinhosWallD();
             }
-            else if (sequenceSkill == 3)
+            else if (sequenceSkill == 2)
             {
-
+                CriarEspinhosDuplo();
             }
             StopAllCoroutines();
         }
