@@ -113,7 +113,7 @@ public class GameManager : MonoBehaviour
     {
         orbesScore++;
         powerSlider.GetComponent<Slider>().value = orbesScore;
-        if (orbesScore>=2)
+        if (orbesScore>=1)
         {
             //Chama o Boss
             MecanicaBoss01();

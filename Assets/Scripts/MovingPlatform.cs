@@ -129,17 +129,22 @@ public class MovingPlatform : MonoBehaviour
         if (collision.gameObject.CompareTag("Espinhos") && isVertical)
         {
             // Procura por um filho com o componente PlayerController
-            PlayerController player = GetComponentInChildren<PlayerController>();
-            if (player != null)
-            {
-                // Remove o parent do objeto que tem o PlayerController
-                player.transform.SetParent(null);
-            }
+            VerificaPlayer();
             DestroyObectPlat();
         }
     }
     private void DestroyObectPlat()
     {
+        VerificaPlayer();
         Destroy(gameObject);
+    }
+    void VerificaPlayer()
+    {
+        PlayerController player = GetComponentInChildren<PlayerController>();
+        if (player != null)
+        {
+            // Remove o parent do objeto que tem o PlayerController
+            player.transform.SetParent(null);
+        }
     }
 }

@@ -1658,13 +1658,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 962270908}
+  - component: {fileID: 962270909}
   m_Layer: 0
   m_Name: Boss1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &962270908
 Transform:
   m_ObjectHideFlags: 0
@@ -1681,6 +1682,26 @@ Transform:
   - {fileID: 1498284935}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &962270909
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 962270906}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef85ef282e6d30d47bcfffc56f5323e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projeteisPrefab: {fileID: 8429228203945612754, guid: a2ae0be5017b277428d7442342f97329, type: 3}
+  espinhosWallPrefab: {fileID: 891251234016740610, guid: 936d42da4abaf2c468c7476eefb88e98, type: 3}
+  firePoint: {fileID: 962270908}
+  player: {fileID: 1232500796}
+  projectileSpeed: 5
+  paredeSpeed: 5
+  fireRate: 1
+  spawnFireTime: 5
 --- !u!1 &989895690
 GameObject:
   m_ObjectHideFlags: 0
@@ -2695,7 +2716,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 2
-  jumpForce: 6.8
+  jumpForce: 6.6
   isGrounded: 1
 --- !u!1 &1320406556
 GameObject:
