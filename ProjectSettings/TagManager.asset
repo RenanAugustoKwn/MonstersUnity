@@ -9,6 +9,7 @@ TagManager:
   - Wall
   - ColliderGround
   - Espinhos
+  - PlataformaBase
   layers:
   - Default
   - TransparentFX

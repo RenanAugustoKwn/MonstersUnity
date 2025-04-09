@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,6 +13,12 @@ public class GameManager : MonoBehaviour
     public GameObject[] vidasGO;
     public GameObject powerSlider;
     public GameObject gameOverPainel;
+    public GameObject plataformaBase;
+
+    public CenarioCreate cenarioCreate;
+
+    public PlataformasCreate plataformasCreate;
+
     public Vector2 checkPoint;
 
 
@@ -20,6 +27,7 @@ public class GameManager : MonoBehaviour
     public int orbesScore = 0;
     public int totalVida = 3;
 
+    public static event Action DestroyPlats;
 
     // Start is called before the first frame update
     void Start()
@@ -39,6 +47,11 @@ public class GameManager : MonoBehaviour
     }
     public void MecanicaBoss01()
     {
+
+        plataformaBase.SetActive(true);
+        plataformasCreate.PauseSpawn();
+        cenarioCreate.scrollSpeed = 0f;
+        DestroyPlats?.Invoke();
 
     }
 
@@ -89,9 +102,10 @@ public class GameManager : MonoBehaviour
     {
         orbesScore++;
         powerSlider.GetComponent<Slider>().value = orbesScore;
-        if (orbesScore>=30)
+        if (orbesScore>=2)
         {
-            //Chama o boss
+            //Chama o Boss
+            MecanicaBoss01();
         }
     }
     public void SpawnOrbes()
@@ -99,7 +113,7 @@ public class GameManager : MonoBehaviour
         float width = imageSpawn.rect.width;
 
         Vector3 localPos = new Vector3(
-            Random.Range(-width / 2f, width / 2f),
+            UnityEngine.Random.Range(-width / 2f, width / 2f),
             0f,
             0f
         );
@@ -112,7 +126,7 @@ public class GameManager : MonoBehaviour
         float width = imageSpawn.rect.width;
 
         Vector3 localPos = new Vector3(
-            Random.Range(-width / 2f, width / 2f),
+            UnityEngine.Random.Range(-width / 2f, width / 2f),
             0f,
             0f
         );

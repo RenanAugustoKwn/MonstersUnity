@@ -1,5 +1,6 @@
 using UnityEngine;
 using static UnityEditor.SceneView;
+using System;
 
 public class MovingPlatform : MonoBehaviour
 {
@@ -24,6 +25,17 @@ public class MovingPlatform : MonoBehaviour
     private GameManager gameManager;
     private CenarioCreate cenarioCreate;
     private PlataformasCreate PlataformasCreate;
+
+    void OnEnable()
+    {
+        GameManager.DestroyPlats += DestroyObectPlat;
+    }
+
+    void OnDisable()
+    {
+        GameManager.DestroyPlats -= DestroyObectPlat;
+    }
+
 
     void Start()
     {
@@ -123,7 +135,11 @@ public class MovingPlatform : MonoBehaviour
                 // Remove o parent do objeto que tem o PlayerController
                 player.transform.SetParent(null);
             }
-            Destroy(gameObject);
+            DestroyObectPlat();
         }
+    }
+    private void DestroyObectPlat()
+    {
+        Destroy(gameObject);
     }
 }

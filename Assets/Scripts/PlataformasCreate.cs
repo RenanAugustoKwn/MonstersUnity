@@ -23,6 +23,10 @@ public class PlataformasCreate : MonoBehaviour
     {
         StartCoroutine(SpawnPlatformsLoop());
     }
+    public void PauseSpawn()
+    {
+        StopAllCoroutines();
+    }
 
     IEnumerator SpawnPlatformsLoop()
     {
