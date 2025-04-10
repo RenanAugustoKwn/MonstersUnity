@@ -16,6 +16,9 @@ public class GameManager : MonoBehaviour
     public GameObject plataformaBase;
     public GameObject boss01;
 
+    public GameObject powerBtn;
+    public GameObject jumpBtn;
+
     public CenarioCreate cenarioCreate;
 
     public PlataformasCreate plataformasCreate;
@@ -27,6 +30,7 @@ public class GameManager : MonoBehaviour
     public float timeSpawnPedras = 2f;
     public int orbesScore = 0;
     public int totalVida = 3;
+    public int estagioFase = 0;
 
     bool moveboss01 = false;
     public static event Action DestroyPlats;
@@ -55,11 +59,21 @@ public class GameManager : MonoBehaviour
         plataformasCreate.PauseSpawn();
         cenarioCreate.scrollSpeed = 0f;
         DestroyPlats?.Invoke();
-
         boss01.SetActive(true);
         moveboss01 = true;
     }
+    public void Boss01Derrotado()
+    {
+        orbesScore = 0;
+        powerBtn.SetActive(false);
+        jumpBtn.SetActive(true);
+        FimEstagio01();
+        estagioFase++;
+    }
+    public void FimEstagio01()
+    {
 
+    }
     public void RemoveVida()
     {
         totalVida--;
@@ -107,8 +121,10 @@ public class GameManager : MonoBehaviour
     {
         orbesScore++;
         powerSlider.GetComponent<Slider>().value = orbesScore;
-        if (orbesScore>=1)
+        if (orbesScore>=4 && estagioFase ==0)
         {
+            jumpBtn.SetActive(false);
+            powerBtn.SetActive(true);
             //Chama o Boss
             MecanicaBoss01();
         }

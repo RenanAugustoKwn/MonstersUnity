@@ -3,7 +3,7 @@ using UnityEngine.EventSystems;
 
 public class MovementButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
-    public enum ButtonType { Left, Right, Jump }
+    public enum ButtonType { Left, Right, Jump, Attack }
     public ButtonType buttonType;
 
     private PlayerController player;
@@ -34,8 +34,13 @@ public class MovementButton : MonoBehaviour, IPointerDownHandler, IPointerUpHand
                 break;
 
             case ButtonType.Jump:
-                if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.Space))
+                if (Input.GetKeyDown(KeyCode.W))
                     player.Jump();
+                break;
+
+            case ButtonType.Attack:
+                if (Input.GetKeyDown(KeyCode.Space))
+                    player.Attack();
                 break;
         }
     }
@@ -53,6 +58,9 @@ public class MovementButton : MonoBehaviour, IPointerDownHandler, IPointerUpHand
                 player.StartMovingRight();
                 break;
             case ButtonType.Jump:
+                player.Jump();
+                break;
+            case ButtonType.Attack:
                 player.Jump();
                 break;
         }

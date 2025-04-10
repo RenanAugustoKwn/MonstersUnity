@@ -4,7 +4,13 @@ public class ProjectileScript : MonoBehaviour
 {
     private Vector2 direction;
     private float speed;
+    private BossScript bossScript;
 
+
+    private void Start()
+    {
+        bossScript = FindAnyObjectByType<BossScript>();
+    }
     public void SetDirection(Vector2 dir, float spd)
     {
         direction = dir.normalized;
@@ -13,6 +19,10 @@ public class ProjectileScript : MonoBehaviour
 
     void Update()
     {
+        if (bossScript.vidaBoss <= 0)
+        {
+            Destroy(gameObject);
+        }
         // Move o projétil na direção especificada
         transform.Translate(direction * speed * Time.deltaTime);
 

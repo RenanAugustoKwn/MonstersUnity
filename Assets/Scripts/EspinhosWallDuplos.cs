@@ -14,10 +14,12 @@ public class EspinhosWallDuplos : MonoBehaviour
     private float posInitial;
 
     public static event Action BossTimeFire;
+    private BossScript bossScript;
 
 
     private void Start()
     {
+        bossScript = FindAnyObjectByType<BossScript>();
         StartCoroutine(AvancarTime());
     }
     public void SetSpeed(float spd)
@@ -28,6 +30,10 @@ public class EspinhosWallDuplos : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (bossScript.vidaBoss <= 0)
+        {
+            Destroy(gameObject);
+        }
         if (avancar)
         {
             // Move a parede na direção especificada

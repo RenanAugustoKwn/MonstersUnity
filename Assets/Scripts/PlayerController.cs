@@ -1,11 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using static UnityEditor.PlayerSettings;
 
 public class PlayerController : MonoBehaviour
 {
     public float moveSpeed = 5f;
     public float jumpForce = 10f;
+
+    public GameObject orbePowerPrefab;
 
     private Rigidbody2D rb;
     public bool isGrounded = true;
@@ -72,6 +76,19 @@ public class PlayerController : MonoBehaviour
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
             isGrounded = false;
+        }
+    }
+    public void Attack()
+    {
+        if (gameManager.powerBtn.GetComponent<Button>().interactable)
+        {
+            GameObject powerClone = Instantiate(orbePowerPrefab, gameObject.transform.position, Quaternion.identity);
+            OrbePowerScript powerScript = powerClone.GetComponent<OrbePowerScript>();
+            if (powerScript != null)
+            {
+                powerScript.SetOrbe(8f, true, false);
+            }
+            gameManager.powerBtn.GetComponent<Button>().interactable = false;
         }
     }
     public void JumpReviver()

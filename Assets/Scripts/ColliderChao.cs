@@ -26,6 +26,11 @@ public class ColliderChao : MonoBehaviour
            collision.GetComponent<MovingPlatform>().SetCam();
            collision.GetComponent<MovingPlatform>().SetGround();
         }
+        else if (collision.gameObject.CompareTag("Wall"))
+        {
+            player.isGrounded = true;
+            player.GetComponent<BoxCollider2D>().isTrigger = false;
+        }
         else
         {
             player.isGrounded = false;

@@ -10,6 +10,8 @@ TagManager:
   - ColliderGround
   - Espinhos
   - PlataformaBase
+  - OrbePower
+  - Inimigo
   layers:
   - Default
   - TransparentFX

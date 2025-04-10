@@ -14,12 +14,14 @@ public class EspinhosWall : MonoBehaviour
     private bool trocarDir = false;
     private float posInitial;
     private bool wallE = false;
+    private BossScript bossScript;
 
     public static event Action BossTimeFire;
 
 
     private void Start()
     {
+        bossScript = FindAnyObjectByType<BossScript>();
         StartCoroutine(AvancarTime());
     }
     public void SetDirection(Vector2 dir, float spd, float posInit, bool wallEsquerda)
@@ -34,6 +36,10 @@ public class EspinhosWall : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (bossScript.vidaBoss <=0)
+        {
+            Destroy(gameObject);
+        }
         if (avancar)
         {
             // Move a parede na direção especificada

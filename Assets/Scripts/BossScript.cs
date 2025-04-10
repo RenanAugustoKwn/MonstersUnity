@@ -7,6 +7,7 @@ public class BossScript : MonoBehaviour
     public GameObject projeteisPrefab;    // Prefab do projétil
     public GameObject espinhosWallPrefab;
     public GameObject espinhosWallDuploPrefab;
+    public GameObject orbePowerPrefab;
     public Transform firePoint;            // Ponto de onde os projéteis são disparados
     public Transform player;               // Referência ao jogador
 
@@ -15,12 +16,15 @@ public class BossScript : MonoBehaviour
     public float paredeSpeed = 5f;
     public float fireRate = 1f;            // Intervalo entre disparos (em segundos)
     public float spawnFireTime = 5f;       // Tempo disparando
+    public int vidaBoss = 3;
 
     private float fireTimer = 0f;
     private bool spawnFire = true;
     private bool spawnWall = false;
 
     public int sequenceSkill = 0;
+
+    private GameManager gameManager;
 
     void OnEnable()
     {
@@ -33,16 +37,37 @@ public class BossScript : MonoBehaviour
         EspinhosWall.BossTimeFire -= VoltarAtirar;
         EspinhosWallDuplos.BossTimeFire -= VoltarAtirar;
     }
+    private void Start()
+    {
+        gameManager = FindAnyObjectByType<GameManager>();
+        StartCoroutine(SpawnFireTime());
+    }
+    public void RemoverVidaBoss()
+    {
+        Debug.Log("Removeu Vida");
+        vidaBoss--;
+        if (vidaBoss <= 0)
+        {
+            gameObject.SetActive(false);
+            gameManager.Boss01Derrotado();
+        }
+    }
     void VoltarAtirar()
     {
         spawnFire = true;
         sequenceSkill++;
+        CreateOrbePower();
         StartCoroutine(SpawnFireTime());
     }
-
-    private void Start()
+    void CreateOrbePower()
     {
-        StartCoroutine(SpawnFireTime());
+        Vector3 pos = new(Random.Range(-1.65f, 1.65f), -3f, 0);
+        GameObject powerClone = Instantiate(orbePowerPrefab, pos, Quaternion.identity);
+        OrbePowerScript powerScript = powerClone.GetComponent<OrbePowerScript>();
+        if (powerScript != null)
+        {
+            powerScript.SetOrbe(0f, false, true);
+        }
     }
 
     void Update()
@@ -130,16 +155,41 @@ public class BossScript : MonoBehaviour
             if(sequenceSkill == 0)
             {
                 CriarEspinhosWallE();
+                StopAllCoroutines();
             }
             else if (sequenceSkill == 1)
             {
                 CriarEspinhosWallD();
+                StopAllCoroutines();
             }
             else if (sequenceSkill == 2)
             {
                 CriarEspinhosDuplo();
+                StopAllCoroutines();
             }
-            StopAllCoroutines();
+            else if (sequenceSkill >= 3)
+            {
+                int skillRandom = Random.Range(0, 3);
+                if(skillRandom == 0)
+                {
+                    CriarEspinhosWallE();
+                    StopAllCoroutines();
+                }
+                else if(skillRandom == 1)
+                {
+                    CriarEspinhosWallD();
+                    StopAllCoroutines();
+                }
+                else if (skillRandom == 2)
+                {
+                    CriarEspinhosDuplo();
+                    StopAllCoroutines();
+                }
+                else if (skillRandom == 3)
+                {
+                    spawnFire = true;
+                }
+            }
         }
     }
 }
