@@ -31,7 +31,7 @@ public class EspinhosFinal : MonoBehaviour
     {
         if(collision.gameObject.CompareTag("Player"))
         {
-            gameManager.RemoveVida();
+            gameManager.RemoveVidaEspinhos();
         }
     }
 }

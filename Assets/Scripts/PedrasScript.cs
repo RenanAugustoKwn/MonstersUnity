@@ -27,7 +27,7 @@ public class PedrasScript : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            gameManager.RemoveVida();
+            gameManager.RemoveVidaSkill();
             Destroy(gameObject);
         }
     }

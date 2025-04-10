@@ -934,7 +934,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -150, y: -240.4}
+  m_AnchoredPosition: {x: -150, y: -240.40002}
   m_SizeDelta: {x: 80, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &375388216
@@ -1280,7 +1280,6 @@ GameObject:
   - component: {fileID: 657933656}
   - component: {fileID: 657933655}
   - component: {fileID: 657933654}
-  - component: {fileID: 657933658}
   - component: {fileID: 657933657}
   m_Layer: 5
   m_Name: EsquerdaBtn
@@ -1404,18 +1403,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttonType: 0
---- !u!114 &657933658
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 657933652}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 88063a2f6dd38924893d526979f4b9cf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &705118390
 GameObject:
   m_ObjectHideFlags: 0
@@ -2163,9 +2150,15 @@ MonoBehaviour:
   orbesPrefab: {fileID: 2828992376581353665, guid: cb36ed320dcfd2442959f0c28c831f05, type: 3}
   pedrasPrefab: {fileID: 609618103738244993, guid: 0e652646d4353ed41a1fd835cab445d4, type: 3}
   vidasGO:
-  - {fileID: 1219384222}
-  - {fileID: 483903909}
   - {fileID: 302527760}
+  - {fileID: 483903909}
+  - {fileID: 1219384222}
+  - {fileID: 821112115}
+  - {fileID: 227705423}
+  - {fileID: 1787574458}
+  - {fileID: 993233671}
+  - {fileID: 375388214}
+  - {fileID: 1932044277}
   powerSlider: {fileID: 705118390}
   gameOverPainel: {fileID: 275732382}
   plataformaBase: {fileID: 3412415419388214056}
@@ -2185,7 +2178,7 @@ MonoBehaviour:
   timeSpawnOrbes: 1
   timeSpawnPedras: 2
   orbesScore: 0
-  totalVida: 12
+  totalVida: 9
   estagioFase: 0
 --- !u!1 &993233671
 GameObject:
@@ -2221,7 +2214,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -60, y: -240.4}
+  m_AnchoredPosition: {x: -60, y: -240.40002}
   m_SizeDelta: {x: 80, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &993233673
@@ -2592,13 +2585,13 @@ RectTransform:
   - {fileID: 1017714951}
   - {fileID: 705118391}
   - {fileID: 302527761}
-  - {fileID: 821112116}
-  - {fileID: 993233672}
   - {fileID: 483903910}
-  - {fileID: 227705424}
-  - {fileID: 375388215}
   - {fileID: 1219384223}
+  - {fileID: 821112116}
+  - {fileID: 227705424}
   - {fileID: 1787574459}
+  - {fileID: 993233672}
+  - {fileID: 375388215}
   - {fileID: 1932044278}
   - {fileID: 1691102859}
   - {fileID: 275732383}
@@ -3047,7 +3040,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 0.012643337, g: 0, b: 1, a: 1}
   m_FlipX: 0
@@ -3834,7 +3827,6 @@ GameObject:
   - component: {fileID: 1677898457}
   - component: {fileID: 1677898456}
   - component: {fileID: 1677898455}
-  - component: {fileID: 1677898459}
   - component: {fileID: 1677898458}
   m_Layer: 5
   m_Name: DireitaBtn
@@ -3958,18 +3950,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttonType: 1
---- !u!114 &1677898459
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1677898453}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 88063a2f6dd38924893d526979f4b9cf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1682158234
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4280,7 +4260,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -240, y: -240.4}
+  m_AnchoredPosition: {x: -240, y: -240.40002}
   m_SizeDelta: {x: 80, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1932044279

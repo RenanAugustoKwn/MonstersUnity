@@ -5,10 +5,12 @@ public class ProjectileScript : MonoBehaviour
     private Vector2 direction;
     private float speed;
     private BossScript bossScript;
+    private GameManager gameManager;
 
 
     private void Start()
     {
+        gameManager = FindAnyObjectByType<GameManager>();
         bossScript = FindAnyObjectByType<BossScript>();
     }
     public void SetDirection(Vector2 dir, float spd)
@@ -39,6 +41,7 @@ public class ProjectileScript : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             Debug.Log("Projétil acertou o jogador!");
+            gameManager.RemoveVidaSkill();
             Destroy(gameObject);
         }
     }

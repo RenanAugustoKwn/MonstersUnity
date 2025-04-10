@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
 
     private bool isMovingLeft = false;
     private bool isMovingRight = false;
+    private bool travarPlayer = true;
 
     private GameManager gameManager;
 
@@ -35,10 +36,9 @@ public class PlayerController : MonoBehaviour
         {
             rb.velocity = new Vector2(moveSpeed, rb.velocity.y);
         }
-        else
+        else if(travarPlayer)
         {
-            // Parar no eixo X se nenhum botão estiver pressionado
-            rb.velocity = new Vector2(0f, rb.velocity.y);
+           rb.velocity = new Vector2(0f, rb.velocity.y);
         }
         if (!isGrounded)
         {
@@ -78,6 +78,19 @@ public class PlayerController : MonoBehaviour
             isGrounded = false;
         }
     }
+    public void Empurra(bool paraDireita)
+    {
+        travarPlayer = false;
+        StartCoroutine(TravarPlayer());
+        float direcao = paraDireita ? 1f : -1f;
+        rb.velocity = new Vector2(direcao * 5f, 1f);
+        isGrounded = false;
+    }
+    public void JumpDano()
+    {
+        rb.velocity = new Vector2(rb.velocity.x, 5f);
+        isGrounded = false;
+    }
     public void Attack()
     {
         if (gameManager.powerBtn.GetComponent<Button>().interactable)
@@ -105,7 +118,16 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Espinhos"))
         {
-            gameManager.RemoveVida();
+            gameManager.RemoveVidaEspinhos();
+        }
+    }
+    IEnumerator TravarPlayer()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(1f);
+            travarPlayer = true;
+            StopAllCoroutines();
         }
     }
 }

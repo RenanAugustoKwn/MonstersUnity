@@ -15,12 +15,14 @@ public class EspinhosWall : MonoBehaviour
     private float posInitial;
     private bool wallE = false;
     private BossScript bossScript;
+    private GameManager gameManager;
 
     public static event Action BossTimeFire;
 
 
     private void Start()
     {
+        gameManager = FindAnyObjectByType<GameManager>();
         bossScript = FindAnyObjectByType<BossScript>();
         StartCoroutine(AvancarTime());
     }
@@ -110,6 +112,15 @@ public class EspinhosWall : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             Debug.Log("Parede acertou o jogador!");
+            if(wallE)
+            {
+                gameManager.player.GetComponent<PlayerController>().Empurra(false);
+            }
+            else
+            {
+                gameManager.player.GetComponent<PlayerController>().Empurra(true);
+            }
+            gameManager.RemoveVidaWall();
         }
     }
     IEnumerator AvancarTime()

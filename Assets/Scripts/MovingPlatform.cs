@@ -8,7 +8,7 @@ public class MovingPlatform : MonoBehaviour
     public bool isHorizontal = false;
     public bool isCameraMove = false;
 
-    public bool moveCenario, moveCenarioNoSpawn = false;
+    public bool moveCenario = false;
     public float speed = 2f;
 
     public float speedUp = 3f;
@@ -105,19 +105,14 @@ public class MovingPlatform : MonoBehaviour
         if (moveCenario)
         {
             cenarioCreate.scrollSpeed = 1.5f;
-            cenarioCreate.StartGenerate();
-            PlataformasCreate.StartSpawn();
-            moveCenario = false;
-        }
-        else if(moveCenarioNoSpawn)
-        {
-            cenarioCreate.scrollSpeed = 1.5f;
-            moveCenarioNoSpawn = false;
+            if (!cenarioCreate.cenarioAtivo)
+            {
+                cenarioCreate.StartGenerate();
+            }
             PlataformasCreate.StartSpawn();
             gameManager.plataformaBase.SetActive(false);
-            moveCenarioNoSpawn = false;
+            moveCenario = false;
         }
-
     }
 
     void OnCollisionEnter2D(Collision2D collision)

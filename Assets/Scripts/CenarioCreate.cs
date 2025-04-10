@@ -14,6 +14,7 @@ public class CenarioCreate : MonoBehaviour
     public float wallHeight = 12f;         // Altura da parede (corresponde ao scale.y ou altura visual)
 
     private Transform lastRightWall;
+    public bool cenarioAtivo = false;
 
     void Start()
     {
@@ -24,6 +25,7 @@ public class CenarioCreate : MonoBehaviour
     {
         GenerateWallBlock(); // primeira parede
         GenerateWallBlock(); // segunda parede
+        cenarioAtivo = true;
     }
 
     void Update()

@@ -17,6 +17,7 @@ public class EspinhosWallDuplos : MonoBehaviour
     private BossScript bossScript;
 
 
+
     private void Start()
     {
         bossScript = FindAnyObjectByType<BossScript>();
@@ -72,13 +73,6 @@ public class EspinhosWallDuplos : MonoBehaviour
                 Destroy(gameObject);
             }
 
-        }
-    }
-    void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Player"))
-        {
-            Debug.Log("Parede acertou o jogador!");
         }
     }
     IEnumerator AvancarTime()

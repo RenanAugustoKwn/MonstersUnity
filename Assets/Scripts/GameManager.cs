@@ -36,6 +36,8 @@ public class GameManager : MonoBehaviour
 
     public static event Action DestroyPlats;
 
+    bool delayRemoveVida = true;
+
     public void ComecarACairOrbes()
     {
         StartCoroutine(SpawnLoopOrbes());
@@ -80,7 +82,7 @@ public class GameManager : MonoBehaviour
         platClone3.transform.SetParent(cenarioCreate.gameObject.transform);
 
         MovingPlatform platScript = platClone3.GetComponent<MovingPlatform>();
-        platScript.moveCenarioNoSpawn = true;
+        platScript.moveCenario = true;
 
         Vector3 pos4 = new(trocaDeEstagio[4].transform.position.x, trocaDeEstagio[4].transform.position.y, 0);
         GameObject platClone4 = Instantiate(plataformasPrefab, pos4, Quaternion.identity);
@@ -89,54 +91,56 @@ public class GameManager : MonoBehaviour
         player.GetComponent<PlayerController>().isGrounded =true;
 
     }
-    public void RemoveVida()
+    public void RemoveVidaWall()
     {
-        totalVida--;
-        if (totalVida == 3)
-        {
-            vidasGO[0].SetActive(true);
-            vidasGO[1].SetActive(true);
-            vidasGO[2].SetActive(true);
-        }
-        else if (totalVida == 2)
-        {
-            vidasGO[0].SetActive(false);
-            vidasGO[1].SetActive(true);
-            vidasGO[2].SetActive(true);
-        }
-        else if (totalVida == 1)
-        {
-            vidasGO[0].SetActive(false);
-            vidasGO[1].SetActive(false);
-            vidasGO[2].SetActive(true);
-        }
+        RemoveVidaDelay();
+    }
+    public void RemoveVidaEspinhos()
+    {
+        RemoveVida();
 
-        if (totalVida <= 0)
-        {
-            {
-                vidasGO[0].SetActive(false);
-                vidasGO[1].SetActive(false);
-                vidasGO[2].SetActive(false);
-            }
-        }
-
-        if(totalVida > 0)
+        if (totalVida > 0)
         {
             player.transform.position = checkPoint;
             player.GetComponent<BoxCollider2D>().isTrigger = true;
             player.GetComponent<PlayerController>().JumpReviver();
         }
-        else
+    }
+    public void RemoveVidaSkill()
+    {
+        RemoveVida();
+    }
+    void RemoveVida()
+    {
+        totalVida--;
+
+        for (int i = 0; i < vidasGO.Length; i++)
+        {
+            // Ativa se o índice for menor que o total de vidas restantes
+            vidasGO[i].SetActive(i < totalVida);
+        }
+        if (totalVida <= 0)
         {
             player.SetActive(false);
             gameOverPainel.SetActive(true);
         }
     }
+    void RemoveVidaDelay()
+    {
+        StartCoroutine(DelayVida());
+
+        if(delayRemoveVida)
+        {
+            delayRemoveVida = false;
+            RemoveVida();
+        }
+
+    }
     public void AddOrbes()
     {
         orbesScore++;
         powerSlider.GetComponent<Slider>().value = orbesScore;
-        if (orbesScore>=5)
+        if (orbesScore>=1)
         {
             jumpBtn.SetActive(false);
             powerBtn.SetActive(true);
@@ -184,6 +188,15 @@ public class GameManager : MonoBehaviour
         {
             SpawnPedras();
             yield return new WaitForSeconds(timeSpawnPedras);
+        }
+    }
+    IEnumerator DelayVida()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(2f);
+            delayRemoveVida = true;
+            StopCoroutine(DelayVida());
         }
     }
 }
