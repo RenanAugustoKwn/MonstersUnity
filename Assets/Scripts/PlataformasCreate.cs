@@ -55,10 +55,8 @@ public class PlataformasCreate : MonoBehaviour
                 }
                 else if (moveRandom == 2)
                 {
-                    platform.gameObject.GetComponent<MovingPlatform>().isHorizontal = true;
-                    //platform.gameObject.GetComponent<MovingPlatform>().isVertical = true;
+                    platform.gameObject.GetComponent<MovingPlatform>().isVertical = true;
                 }
-                platform.gameObject.GetComponent<MovingPlatform>().isHorizontal = true;
             }
 
 

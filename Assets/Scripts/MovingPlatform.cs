@@ -120,7 +120,12 @@ public class MovingPlatform : MonoBehaviour
         if (isHorizontal && collision.gameObject.CompareTag("Wall"))
         {
             // Inverte direção horizontal ao colidir
-            direction *= -1;
+            direction = Vector2.left;
+        }
+        if (isHorizontal && collision.gameObject.CompareTag("Wall2"))
+        {
+            // Inverte direção horizontal ao colidir
+            direction = Vector2.right;
         }
         if (collision.gameObject.CompareTag("Player"))
         {

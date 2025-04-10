@@ -1758,6 +1758,7 @@ MonoBehaviour:
   levelWidth: 5
   scrollSpeed: 0
   wallHeight: 12
+  cenarioAtivo: 0
 --- !u!1 &838289821
 GameObject:
   m_ObjectHideFlags: 0
@@ -2178,7 +2179,7 @@ MonoBehaviour:
   timeSpawnOrbes: 1
   timeSpawnPedras: 2
   orbesScore: 0
-  totalVida: 9
+  totalVida: 100
   estagioFase: 0
 --- !u!1 &993233671
 GameObject:
@@ -3353,6 +3354,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1114172382885858934, guid: 182318be970e20d478d8fbeeb02c6d68, type: 3}
+      propertyPath: m_TagString
+      value: Wall2
+      objectReference: {fileID: 0}
     - target: {fileID: 6155968670501096110, guid: 182318be970e20d478d8fbeeb02c6d68, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.5
@@ -3690,11 +3695,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6597570658153794032, guid: 27861babe89115f45972e3d9bc620d3c, type: 3}
       propertyPath: isVertical
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6597570658153794032, guid: 27861babe89115f45972e3d9bc620d3c, type: 3}
       propertyPath: isHorizontal
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

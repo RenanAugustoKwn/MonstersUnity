@@ -47,7 +47,15 @@ public class CenarioCreate : MonoBehaviour
         Vector3 leftPos = new Vector3(-levelWidth / 2f, newY, 0f);
         Vector3 rightPos = new Vector3(levelWidth / 2f, newY, 0f);
 
-        Instantiate(wallPrefab, leftPos, Quaternion.identity, levelParent);
-        lastRightWall = Instantiate(wallPrefab, rightPos, Quaternion.identity, levelParent).transform;
+        // Instancia a parede da esquerda e define a tag
+        GameObject leftWall = Instantiate(wallPrefab, leftPos, Quaternion.identity, levelParent);
+        leftWall.tag = "Wall2";
+
+        // Instancia a parede da direita e define a tag
+        GameObject rightWall = Instantiate(wallPrefab, rightPos, Quaternion.identity, levelParent);
+        rightWall.tag = "Wall";
+
+        // Atualiza a referência da última parede direita criada
+        lastRightWall = rightWall.transform;
     }
 }

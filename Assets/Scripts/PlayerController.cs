@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour
     private bool isMovingLeft = false;
     private bool isMovingRight = false;
     private bool travarPlayer = true;
+    private bool empurrandoPlayer = false;
 
     private GameManager gameManager;
 
@@ -28,11 +29,11 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        if (isMovingLeft)
+        if (isMovingLeft && !empurrandoPlayer)
         {
             rb.velocity = new Vector2(-moveSpeed, rb.velocity.y);
         }
-        else if (isMovingRight)
+        else if (isMovingRight && !empurrandoPlayer)
         {
             rb.velocity = new Vector2(moveSpeed, rb.velocity.y);
         }
@@ -81,6 +82,7 @@ public class PlayerController : MonoBehaviour
     public void Empurra(bool paraDireita)
     {
         travarPlayer = false;
+        empurrandoPlayer = true;
         StartCoroutine(TravarPlayer());
         float direcao = paraDireita ? 1f : -1f;
         rb.velocity = new Vector2(direcao * 5f, 1f);
@@ -106,7 +108,7 @@ public class PlayerController : MonoBehaviour
     }
     public void JumpReviver()
     {
-        rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+        rb.velocity = new Vector2(rb.velocity.x, 9f);
         isGrounded = false;
     }
     public void JumpPause()
@@ -127,6 +129,7 @@ public class PlayerController : MonoBehaviour
         {
             yield return new WaitForSeconds(1f);
             travarPlayer = true;
+            empurrandoPlayer = false;
             StopAllCoroutines();
         }
     }

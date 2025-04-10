@@ -101,7 +101,6 @@ public class GameManager : MonoBehaviour
 
         if (totalVida > 0)
         {
-            player.transform.position = checkPoint;
             player.GetComponent<BoxCollider2D>().isTrigger = true;
             player.GetComponent<PlayerController>().JumpReviver();
         }
@@ -140,7 +139,7 @@ public class GameManager : MonoBehaviour
     {
         orbesScore++;
         powerSlider.GetComponent<Slider>().value = orbesScore;
-        if (orbesScore>=1)
+        if (orbesScore>=5)
         {
             jumpBtn.SetActive(false);
             powerBtn.SetActive(true);

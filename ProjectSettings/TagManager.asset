@@ -12,6 +12,7 @@ TagManager:
   - PlataformaBase
   - OrbePower
   - Inimigo
+  - Wall2
   layers:
   - Default
   - TransparentFX

@@ -50,6 +50,7 @@ public class BossScript : MonoBehaviour
         {
             gameObject.SetActive(false);
             gameManager.Boss01Derrotado();
+            Destroy(gameObject);
         }
     }
     void VoltarAtirar()
