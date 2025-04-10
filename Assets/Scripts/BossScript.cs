@@ -9,7 +9,6 @@ public class BossScript : MonoBehaviour
     public GameObject espinhosWallDuploPrefab;
     public GameObject orbePowerPrefab;
     public Transform firePoint;            // Ponto de onde os projéteis são disparados
-    public Transform player;               // Referência ao jogador
 
     [Header("Configurações")]
     public float projectileSpeed = 5f;     // Velocidade do projétil
@@ -21,6 +20,7 @@ public class BossScript : MonoBehaviour
     private float fireTimer = 0f;
     private bool spawnFire = true;
     private bool spawnWall = false;
+    private bool moveboss = true;
 
     public int sequenceSkill = 0;
 
@@ -72,6 +72,14 @@ public class BossScript : MonoBehaviour
 
     void Update()
     {
+        if(moveboss)
+        {
+            transform.Translate(Vector2.down * 1f * Time.deltaTime);
+            if (transform.position.y <= 3.5f)
+            {
+                moveboss = false;
+            }
+        }
         if (spawnFire)
         {
             fireTimer += Time.deltaTime;
@@ -129,13 +137,13 @@ public class BossScript : MonoBehaviour
 
     void FireProjectile()
     {
-        if (player == null) return;
+        if (gameManager.player.GetComponent<PlayerController>() == null) return;
 
         // Instancia o projétil
         GameObject projClone = Instantiate(projeteisPrefab, firePoint.position, Quaternion.identity);
 
         // Calcula a direção do projétil
-        Vector2 direction = (player.position - firePoint.position).normalized;
+        Vector2 direction = (gameManager.player.transform.position - firePoint.position).normalized;
 
         // Envia os dados de direção e velocidade pro script do projétil
         ProjectileScript projectileScript = projClone.GetComponent<ProjectileScript>();

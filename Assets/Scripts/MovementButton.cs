@@ -61,7 +61,7 @@ public class MovementButton : MonoBehaviour, IPointerDownHandler, IPointerUpHand
                 player.Jump();
                 break;
             case ButtonType.Attack:
-                player.Jump();
+                player.Attack();
                 break;
         }
     }

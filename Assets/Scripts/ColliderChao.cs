@@ -31,6 +31,11 @@ public class ColliderChao : MonoBehaviour
             player.isGrounded = true;
             player.GetComponent<BoxCollider2D>().isTrigger = false;
         }
+        else if (collision.gameObject.CompareTag("PlataformaBase"))
+        {
+            player.isGrounded = true;
+            player.GetComponent<BoxCollider2D>().isTrigger = false;
+        }
         else
         {
             player.isGrounded = false;

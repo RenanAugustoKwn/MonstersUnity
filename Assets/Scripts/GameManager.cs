@@ -14,7 +14,8 @@ public class GameManager : MonoBehaviour
     public GameObject powerSlider;
     public GameObject gameOverPainel;
     public GameObject plataformaBase;
-    public GameObject boss01;
+    public GameObject boss01Prefab;
+    public GameObject[] trocaDeEstagio;
 
     public GameObject powerBtn;
     public GameObject jumpBtn;
@@ -22,6 +23,7 @@ public class GameManager : MonoBehaviour
     public CenarioCreate cenarioCreate;
 
     public PlataformasCreate plataformasCreate;
+    public GameObject plataformasPrefab;
 
     public Vector2 checkPoint;
 
@@ -32,7 +34,6 @@ public class GameManager : MonoBehaviour
     public int totalVida = 3;
     public int estagioFase = 0;
 
-    bool moveboss01 = false;
     public static event Action DestroyPlats;
 
     public void ComecarACairOrbes()
@@ -43,14 +44,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(moveboss01)
-        {
-            boss01.transform.Translate(Vector2.down * 1f * Time.deltaTime);
-            if(boss01.transform.position.y <= 3.5f)
-            {
-                moveboss01 = false;
-            }
-        }
+
     }
     public void MecanicaBoss01()
     {
@@ -59,8 +53,9 @@ public class GameManager : MonoBehaviour
         plataformasCreate.PauseSpawn();
         cenarioCreate.scrollSpeed = 0f;
         DestroyPlats?.Invoke();
-        boss01.SetActive(true);
-        moveboss01 = true;
+
+        Vector3 pos = new(0, 6.45f, 0);
+        GameObject bossClone = Instantiate(boss01Prefab, pos, Quaternion.identity);
     }
     public void Boss01Derrotado()
     {
@@ -72,6 +67,26 @@ public class GameManager : MonoBehaviour
     }
     public void FimEstagio01()
     {
+        Vector3 pos1 = new(trocaDeEstagio[1].transform.position.x, trocaDeEstagio[1].transform.position.y, 0);
+        GameObject platClone1 = Instantiate(plataformasPrefab, pos1, Quaternion.identity);
+        platClone1.transform.SetParent(cenarioCreate.gameObject.transform);
+
+        Vector3 pos2 = new(trocaDeEstagio[2].transform.position.x, trocaDeEstagio[2].transform.position.y, 0);
+        GameObject platClone2 = Instantiate(plataformasPrefab, pos2, Quaternion.identity);
+        platClone2.transform.SetParent(cenarioCreate.gameObject.transform);
+
+        Vector3 pos3 = new(trocaDeEstagio[3].transform.position.x, trocaDeEstagio[3].transform.position.y, 0);
+        GameObject platClone3 = Instantiate(plataformasPrefab, pos3, Quaternion.identity);
+        platClone3.transform.SetParent(cenarioCreate.gameObject.transform);
+
+        MovingPlatform platScript = platClone3.GetComponent<MovingPlatform>();
+        platScript.moveCenarioNoSpawn = true;
+
+        Vector3 pos4 = new(trocaDeEstagio[4].transform.position.x, trocaDeEstagio[4].transform.position.y, 0);
+        GameObject platClone4 = Instantiate(plataformasPrefab, pos4, Quaternion.identity);
+        platClone4.transform.SetParent(cenarioCreate.gameObject.transform);
+
+        player.GetComponent<PlayerController>().isGrounded =true;
 
     }
     public void RemoveVida()
@@ -121,7 +136,7 @@ public class GameManager : MonoBehaviour
     {
         orbesScore++;
         powerSlider.GetComponent<Slider>().value = orbesScore;
-        if (orbesScore>=4 && estagioFase ==0)
+        if (orbesScore>=5)
         {
             jumpBtn.SetActive(false);
             powerBtn.SetActive(true);
