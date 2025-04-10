@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using static UnityEditor.PlayerSettings;
 
 public class PlayerController : MonoBehaviour
 {
@@ -99,6 +98,9 @@ public class PlayerController : MonoBehaviour
         {
             GameObject powerClone = Instantiate(orbePowerPrefab, gameObject.transform.position, Quaternion.identity);
             OrbePowerScript powerScript = powerClone.GetComponent<OrbePowerScript>();
+            Rigidbody2D rbClone = powerClone.GetComponent<Rigidbody2D>();
+            rbClone.gravityScale = 0f;
+            powerClone.GetComponent<BoxCollider2D>().isTrigger = true;
             if (powerScript != null)
             {
                 powerScript.SetOrbe(8f, true, false);

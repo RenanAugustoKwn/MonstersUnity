@@ -55,8 +55,8 @@ MonoBehaviour:
   projectileSpeed: 5
   paredeSpeed: 5
   fireRate: 1
-  spawnFireTime: 5
-  vidaBoss: 1
+  spawnFireTime: 10
+  vidaBoss: 5
   sequenceSkill: 0
 --- !u!61 &4642807649977742902
 BoxCollider2D:

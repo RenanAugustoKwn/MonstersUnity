@@ -14,12 +14,11 @@ public class BossScript : MonoBehaviour
     public float projectileSpeed = 5f;     // Velocidade do projétil
     public float paredeSpeed = 5f;
     public float fireRate = 1f;            // Intervalo entre disparos (em segundos)
-    public float spawnFireTime = 5f;       // Tempo disparando
+    public float spawnFireTime = 10f;       // Tempo disparando
     public int vidaBoss = 3;
 
     private float fireTimer = 0f;
     private bool spawnFire = true;
-    private bool spawnWall = false;
     private bool moveboss = true;
 
     public int sequenceSkill = 0;
@@ -62,9 +61,16 @@ public class BossScript : MonoBehaviour
     }
     void CreateOrbePower()
     {
-        Vector3 pos = new(Random.Range(-1.65f, 1.65f), -3f, 0);
+        Vector3 pos = new(Random.Range(-1.65f, 1.65f), 1.4f, 0);
         GameObject powerClone = Instantiate(orbePowerPrefab, pos, Quaternion.identity);
         OrbePowerScript powerScript = powerClone.GetComponent<OrbePowerScript>();
+
+        Rigidbody2D rb = powerClone.GetComponent<Rigidbody2D>();
+
+        bool paraDireita = Random.Range(0, 2) == 1;
+        float direcao = paraDireita ? 1f : -1f;
+        rb.velocity = new Vector2(direcao * 0.5f, 0.5f);
+
         if (powerScript != null)
         {
             powerScript.SetOrbe(0f, false, true);

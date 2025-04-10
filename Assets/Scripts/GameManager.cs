@@ -3,36 +3,40 @@ using System.Collections.Generic;
 using System;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    public RectTransform imageSpawn;
-    public GameObject player;
-    public GameObject orbesPrefab;
-    public GameObject pedrasPrefab;
-    public GameObject[] vidasGO;
-    public GameObject powerSlider;
-    public GameObject gameOverPainel;
-    public GameObject plataformaBase;
-    public GameObject boss01Prefab;
-    public GameObject[] trocaDeEstagio;
-
-    public GameObject powerBtn;
-    public GameObject jumpBtn;
-
-    public CenarioCreate cenarioCreate;
-
-    public PlataformasCreate plataformasCreate;
-    public GameObject plataformasPrefab;
-
-    public Vector2 checkPoint;
-
-
+    [Header("Configurações")]
     public float timeSpawnOrbes = 1f;
     public float timeSpawnPedras = 2f;
     public int orbesScore = 0;
     public int totalVida = 3;
     public int estagioFase = 0;
+    public int totalOrbesNext = 5;
+
+    [Header("Prefabs")]
+    public GameObject plataformasPrefab;
+    public GameObject orbesPrefab;
+    public GameObject pedrasPrefab;
+    public GameObject plataformaBase;
+    public GameObject boss01Prefab;
+
+    [Header("Referências")]
+    public RectTransform imageSpawn;
+    public GameObject player;
+    public GameObject powerBtn;
+    public GameObject jumpBtn;
+    public GameObject gameOverPainel;
+    public GameObject powerSlider;
+    public GameObject[] trocaDeEstagio;
+    public GameObject[] vidasGO;
+
+    public CenarioCreate cenarioCreate;
+    public PlataformasCreate plataformasCreate;
+
+
+
 
     public static event Action DestroyPlats;
 
@@ -139,7 +143,7 @@ public class GameManager : MonoBehaviour
     {
         orbesScore++;
         powerSlider.GetComponent<Slider>().value = orbesScore;
-        if (orbesScore>=5)
+        if (orbesScore>= totalOrbesNext)
         {
             jumpBtn.SetActive(false);
             powerBtn.SetActive(true);
@@ -197,5 +201,10 @@ public class GameManager : MonoBehaviour
             delayRemoveVida = true;
             StopCoroutine(DelayVida());
         }
+    }
+
+    public void NextScene(string nomdeScene)
+    {
+        SceneManager.LoadScene(nomdeScene);
     }
 }

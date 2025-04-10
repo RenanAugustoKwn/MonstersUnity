@@ -1,5 +1,4 @@
 using UnityEngine;
-using static UnityEditor.SceneView;
 using System;
 
 public class MovingPlatform : MonoBehaviour
@@ -90,11 +89,7 @@ public class MovingPlatform : MonoBehaviour
 
     public void SetCam()
     {
-        if (isCameraMove)
-        {
-            cam.gameObject.transform.position = new Vector3(0, gameObject.transform.position.y + 2.5f, cam.gameObject.transform.position.z);
-            gameManager.checkPoint = new Vector2(gameObject.transform.position.x, gameObject.transform.position.y + 1f);
-        }
+
     }
 
     public void SetGround()

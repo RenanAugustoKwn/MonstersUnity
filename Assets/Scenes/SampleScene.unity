@@ -392,7 +392,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 224442175}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 991342331}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: NextScene
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: SampleScene
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &224442175
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1487,7 +1499,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1673049743}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 5
+  m_MaxValue: 10
   m_WholeNumbers: 0
   m_Value: 0
   m_OnValueChanged:
@@ -1753,12 +1765,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c103671f8d9bdc1419a16fa86ef42dfc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wallPrefab: {fileID: 1114172382885858934, guid: 182318be970e20d478d8fbeeb02c6d68, type: 3}
-  levelParent: {fileID: 834154942}
   levelWidth: 5
   scrollSpeed: 0
   wallHeight: 12
   cenarioAtivo: 0
+  wallPrefab: {fileID: 1114172382885858934, guid: 182318be970e20d478d8fbeeb02c6d68, type: 3}
+  levelParent: {fileID: 834154942}
 --- !u!1 &838289821
 GameObject:
   m_ObjectHideFlags: 0
@@ -2146,10 +2158,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 826ba158cbc15374fa87dde0ac49bde5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  imageSpawn: {fileID: 1017714951}
-  player: {fileID: 1232500794}
+  timeSpawnOrbes: 1
+  timeSpawnPedras: 2
+  orbesScore: 0
+  totalVida: 9
+  estagioFase: 0
+  totalOrbesNext: 10
+  plataformasPrefab: {fileID: 3412415421443407267, guid: 27861babe89115f45972e3d9bc620d3c, type: 3}
   orbesPrefab: {fileID: 2828992376581353665, guid: cb36ed320dcfd2442959f0c28c831f05, type: 3}
   pedrasPrefab: {fileID: 609618103738244993, guid: 0e652646d4353ed41a1fd835cab445d4, type: 3}
+  plataformaBase: {fileID: 3412415419388214056}
+  boss01Prefab: {fileID: 939948755532248694, guid: b728edfe6d1e07143bec5af3e536732b, type: 3}
+  imageSpawn: {fileID: 1017714951}
+  player: {fileID: 1232500794}
+  powerBtn: {fileID: 816561126}
+  jumpBtn: {fileID: 1320406556}
+  gameOverPainel: {fileID: 275732382}
+  powerSlider: {fileID: 705118390}
+  trocaDeEstagio:
+  - {fileID: 1965266542}
+  - {fileID: 1688661583}
+  - {fileID: 232757628}
+  - {fileID: 1669434546}
+  - {fileID: 1119688436}
   vidasGO:
   - {fileID: 302527760}
   - {fileID: 483903909}
@@ -2160,27 +2191,8 @@ MonoBehaviour:
   - {fileID: 993233671}
   - {fileID: 375388214}
   - {fileID: 1932044277}
-  powerSlider: {fileID: 705118390}
-  gameOverPainel: {fileID: 275732382}
-  plataformaBase: {fileID: 3412415419388214056}
-  boss01Prefab: {fileID: 939948755532248694, guid: b728edfe6d1e07143bec5af3e536732b, type: 3}
-  trocaDeEstagio:
-  - {fileID: 1965266542}
-  - {fileID: 1688661583}
-  - {fileID: 232757628}
-  - {fileID: 1669434546}
-  - {fileID: 1119688436}
-  powerBtn: {fileID: 816561126}
-  jumpBtn: {fileID: 1320406556}
   cenarioCreate: {fileID: 834154943}
   plataformasCreate: {fileID: 1956154721}
-  plataformasPrefab: {fileID: 3412415421443407267, guid: 27861babe89115f45972e3d9bc620d3c, type: 3}
-  checkPoint: {x: 0, y: 0}
-  timeSpawnOrbes: 1
-  timeSpawnPedras: 2
-  orbesScore: 0
-  totalVida: 100
-  estagioFase: 0
 --- !u!1 &993233671
 GameObject:
   m_ObjectHideFlags: 0

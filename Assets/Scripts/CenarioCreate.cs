@@ -2,19 +2,19 @@ using UnityEngine;
 
 public class CenarioCreate : MonoBehaviour
 {
+    [Header("Configuração")]
+    public float levelWidth = 5f;          // Distância entre paredes
+    public float scrollSpeed = 2f;         // Velocidade de descida do cenário
+    public float wallHeight = 12f;         // Altura da parede (corresponde ao scale.y ou altura visual)
+    public bool cenarioAtivo = false;
+
     [Header("Prefabs")]
     public GameObject wallPrefab;
 
     [Header("Referências")]
     public Transform levelParent;
 
-    [Header("Configuração")]
-    public float levelWidth = 5f;          // Distância entre paredes
-    public float scrollSpeed = 2f;         // Velocidade de descida do cenário
-    public float wallHeight = 12f;         // Altura da parede (corresponde ao scale.y ou altura visual)
-
     private Transform lastRightWall;
-    public bool cenarioAtivo = false;
 
     void Start()
     {

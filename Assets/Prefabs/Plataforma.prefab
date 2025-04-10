@@ -178,7 +178,7 @@ MonoBehaviour:
   moveCenario: 0
   speed: 2
   speedUp: 3
-  speedDown: 1
+  speedDown: 1.5
   minY: 1
   maxY: 1
 --- !u!114 &5933932420350359503
